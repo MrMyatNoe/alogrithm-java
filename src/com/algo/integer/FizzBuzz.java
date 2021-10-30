@@ -9,14 +9,20 @@ import java.util.stream.Stream;
 public class FizzBuzz {
 
     public static void main(String[] args) {
-        //fizzBuzz(5);
-        fizzBuzzJava8(15);
+        try {
+            fizzBuzz(4);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //fizzBuzzJava8(15);
     }
     
-    public static void fizzBuzz(int n) {
+    public static List<String> fizzBuzz(int n) throws Exception {
         List<String> list = new ArrayList<>();
+        if(n <= 0) {
+            throw new Exception("Please check number");
+        }
         for (int i = 1; i <= n; i++) {
-            System.out.println(i);
             if(i % 5 == 0 && i % 3 == 0) {
                 list.add("fizzbuzz");
             } 
@@ -32,6 +38,7 @@ public class FizzBuzz {
         }
         list.toArray();
         System.out.println(list);
+        return list;
      }
     
     public static void fizzBuzzJava8(int number) {
