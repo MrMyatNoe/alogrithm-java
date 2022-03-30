@@ -1,7 +1,7 @@
 package com.algo.integer;
 
-public class Palindrome {
-
+public class Palindrome extends Factorial{
+    
     public static void main(String[] args) {
         int r, sum = 0, temp;
         int n = 2002;
