@@ -45,6 +45,7 @@ public class ValidParentheses {
                 System.out.println("stacks in key : "+ stacks);
             } else if(charMap.values().contains(a)) {
                 System.out.println("stacks in value : "+ stacks);
+                System.out.println(stacks.peek());
                 if(!stacks.empty() && charMap.get(stacks.peek()) == a) {
                     stacks.pop();
                 } else {
