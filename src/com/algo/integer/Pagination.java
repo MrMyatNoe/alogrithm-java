@@ -5,36 +5,36 @@ import java.util.List;
 
 public class Pagination {
     
-    List<Integer> list = new ArrayList<>();
+    static List<Integer> list = new ArrayList<>();
+    final static int fix= 5;
 
     public static void main(String[] args) {
-        try {
-            pagination(5, 8);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        getData();
+        int req = 0;
+        if(req == 0) {
+            req = 1;
         }
-    }
-       
-    private static List<Integer> getData() {
-        Pagination pg = new Pagination();
-        for (int i = 1; i <= 20; i++) {
-            pg.list.add(i);
-        }
-        return pg.list;
+        pagination(req);
     }
     
-    private static List<Integer> pagination(int from, int end) throws Exception {
+    private static List<Integer> getData() {
+        for (int i = 1; i <= 50; i++) {
+            list.add(i);
+        }
+        return list;
+    }
+    
+    private static List<Integer> pagination(int currentPage) {
         List<Integer> reList = new ArrayList<>();
-        List<Integer> dataList = getData();
-        if(from > end) {
-            throw new Exception("from should be less than end index");
+        
+        if(list.size() == fix) {
+            System.out.println(list);
+            return list;
         }
-        if(from == end) {
-            System.out.println("in zero zero : " + dataList);
-            return dataList;
-        }
-        reList = dataList.subList(from, end);
-        System.out.println("after sub : " + reList);
+        int end = currentPage * fix;
+        int from = end - 5;
+        reList = list.subList(from, end);
+        System.out.println(reList);
         return reList;
     }
 }
